@@ -4,8 +4,6 @@ services:
     container_name: maths-app
     ports:
       - "1987:80"
-    volumes:
-      - ./img:/usr/share/nginx/html/img
     restart: unless-stopped
     networks:
       - default
