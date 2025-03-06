@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition Aléatoire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Addition Aléatoire</h1>
+        
+        <div class="tables-selection">
+            <h2>Choisissez la difficulté</h2>
+            <div class="difficulty-selection">
+                <label><input type="radio" name="difficulty" value="easy" checked> Facile (0-10)</label>
+                <label><input type="radio" name="difficulty" value="medium"> Moyen (0-50)</label>
+                <label><input type="radio" name="difficulty" value="hard"> Difficile (0-100)</label>
+            </div>
+            <button id="startButton" class="btn">Commencer</button>
+            <a href="index.html" class="btn">Retour au menu</a>
+        </div>
+
+        <div class="exercise-container hidden">
+            <div class="progress">
+                <span id="currentQuestion">1</span>/10
+            </div>
+            <div class="question-container">
+                <div class="question">
+                    <span id="num1"></span> + <span id="num2"></span> = 
+                    <input type="number" id="answer" min="0" max="200" autofocus>
+                </div>
+                <div class="buttons-container">
+                    <button id="validateButton" class="btn validate-btn">Valider</button>
+                    <button id="nextButton" class="btn next-btn hidden">Suivant</button>
+                </div>
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+            </div>
+            <div class="keypad">
+                <button class="key">1</button>
+                <button class="key">2</button>
+                <button class="key">3</button>
+                <button class="key">4</button>
+                <button class="key">5</button>
+                <button class="key">6</button>
+                <button class="key">7</button>
+                <button class="key">8</button>
+                <button class="key">9</button>
+                <button class="key">0</button>
+                <button class="key delete">⌫</button>
+            </div>
+        </div>
+
+        <div class="results hidden">
+            <h2>Résultats</h2>
+            <p>Score: <span id="score">0</span>/10</p>
+            <div class="detailed-results">
+                <h3>Détail des réponses</h3>
+                <div id="answersList"></div>
+            </div>
+            <button class="btn" id="restartButton">Recommencer</button>
+            <a href="index.html" class="btn">Retour au menu</a>
+        </div>
+    </div>
+    <script src="random-addition.js"></script>
+</body>
+</html> 

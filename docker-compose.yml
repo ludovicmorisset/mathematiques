@@ -1,14 +1,15 @@
+version: '3.8'
+
 services:
-  multiplication:
+  web:
     build: .
-    container_name: multiplication-app
-    networks:
-      - default
-    restart: unless-stopped
+    container_name: maths-app
     ports:
-      - 1987:80
-      
+      - "1987:80"
+    volumes:
+      - ./img:/usr/share/nginx/html/img
+    restart: unless-stopped
+
 networks:
-  default:
-    external: true
-    name: web
+  nginx-proxy:
+    external: true 

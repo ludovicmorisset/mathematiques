@@ -3,74 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tables de Multiplication</title>
+    <title>Exercices de Mathématiques</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .menu-item {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #2d8e47;
+        }
+
+        .menu-item h2 {
+            color: #2d8e47;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item p {
+            color: #5f6368;
+            font-size: 1rem;
+        }
+
+        .menu-item img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Tables de Multiplication</h1>
+        <h1>Exercices de Mathématiques</h1>
         
-        <div class="tables-selection">
-            <h2>Sélectionnez les tables à réviser</h2>
-            <div class="tables-grid">
-                <label><input type="checkbox" value="1"> Table de 1</label>
-                <label><input type="checkbox" value="2"> Table de 2</label>
-                <label><input type="checkbox" value="3"> Table de 3</label>
-                <label><input type="checkbox" value="4"> Table de 4</label>
-                <label><input type="checkbox" value="5"> Table de 5</label>
-                <label><input type="checkbox" value="6"> Table de 6</label>
-                <label><input type="checkbox" value="7"> Table de 7</label>
-                <label><input type="checkbox" value="8"> Table de 8</label>
-                <label><input type="checkbox" value="9"> Table de 9</label>
-                <label><input type="checkbox" value="10"> Table de 10</label>
-            </div>
-            <button id="startButton" class="btn">Commencer</button>
-        </div>
+        <div class="menu-grid">
+            <a href="multiplication.html" class="menu-item">
+                <img src="img/multiplication.png" alt="Multiplication">
+                <h2>Tables de Multiplication</h2>
+                <p>Entraînez-vous sur les tables de multiplication de 1 à 10.</p>
+            </a>
 
-        <div class="exercise-container hidden">
-            <div class="progress">
-                <span id="currentQuestion">1</span>/10
-            </div>
-            <div class="question-container">
-                <div class="question">
-                    <span id="num1"></span> × <span id="num2"></span> = 
-                    <input type="number" id="answer" min="0" max="100" autofocus>
-                </div>
-                <div class="buttons-container">
-                    <button id="validateButton" class="btn validate-btn">Valider</button>
-                    <button id="nextButton" class="btn next-btn hidden">Suivant</button>
-                </div>
-                <div class="error-message" id="errorMessage"></div>
-                <div class="success-message" id="successMessage"></div>
-            </div>
-            <div class="keypad">
-                <button class="key">1</button>
-                <button class="key">2</button>
-                <button class="key">3</button>
-                <button class="key">4</button>
-                <button class="key">5</button>
-                <button class="key">6</button>
-                <button class="key">7</button>
-                <button class="key">8</button>
-                <button class="key">9</button>
-                <button class="key">0</button>
-                <button class="key delete">⌫</button>
-            </div>
-        </div>
+            <a href="addition.html" class="menu-item">
+                <img src="img/addition.png" alt="Addition">
+                <h2>Tables d'Addition</h2>
+                <p>Pratiquez les tables d'addition de 1 à 10.</p>
+            </a>
 
-        <div class="results hidden">
-            <h2>Résultats</h2>
-            <p>Score: <span id="score">0</span>/10</p>
-            <div class="detailed-results">
-                <h3>Détail des réponses</h3>
-                <div id="answersList"></div>
-            </div>
-            <button class="btn" id="restartButton">Recommencer</button>
+            <a href="random-addition.html" class="menu-item">
+                <img src="img/random.png" alt="Addition aléatoire">
+                <h2>Addition Aléatoire</h2>
+                <p>Résolvez des additions avec des nombres aléatoires.</p>
+            </a>
+
+            <a href="subtraction.html" class="menu-item">
+                <img src="img/subtraction.png" alt="Soustraction">
+                <h2>Tables de Soustraction</h2>
+                <p>Exercez-vous sur les tables de soustraction de 1 à 10.</p>
+            </a>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html> 
