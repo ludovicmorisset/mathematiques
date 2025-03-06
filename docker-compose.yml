@@ -9,10 +9,13 @@ services:
     volumes:
       - static_content:/usr/share/nginx/html
     restart: unless-stopped
-
+    networks:
+      - default
+    
 volumes:
   static_content:
 
 networks:
-  nginx-proxy:
-    external: true 
+  default:
+    external: true
+    name: web
