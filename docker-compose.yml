@@ -5,6 +5,8 @@ services:
     ports:
       - "1987:80"
     restart: unless-stopped
+    volumes:
+      - ./img:/usr/share/nginx/html/img
     networks:
       - default
 
