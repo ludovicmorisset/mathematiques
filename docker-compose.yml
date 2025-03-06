@@ -9,7 +9,7 @@ services:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.proxy_host=multiplication"
     restart: unless-stopped
     ports:
-      - 6666:6666
+      - 1987:1987
       
 networks:
   default:
