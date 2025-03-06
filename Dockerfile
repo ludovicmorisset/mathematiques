@@ -6,15 +6,21 @@ RUN apk add --no-cache curl
 # Suppression de la configuration par défaut de Nginx
 RUN rm -rf /usr/share/nginx/html/*
 
+# Création des répertoires nécessaires
+RUN mkdir -p /usr/share/nginx/html/img
+
 # Copie des fichiers de l'application
-COPY . /usr/share/nginx/html/
+COPY *.html /usr/share/nginx/html/
+COPY *.js /usr/share/nginx/html/
+COPY *.css /usr/share/nginx/html/
+COPY img/* /usr/share/nginx/html/img/
 
 # Configuration de Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Création du dossier pour les images
-RUN mkdir -p /usr/share/nginx/html/img && \
-    chown -R nginx:nginx /usr/share/nginx/html
+# Configuration des permissions
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html
 
 # Exposition du port 80
 EXPOSE 80

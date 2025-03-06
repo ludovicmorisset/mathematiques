@@ -7,8 +7,11 @@ services:
     ports:
       - "1987:80"
     volumes:
-      - ./img:/usr/share/nginx/html/img
+      - static_content:/usr/share/nginx/html
     restart: unless-stopped
+
+volumes:
+  static_content:
 
 networks:
   nginx-proxy:
