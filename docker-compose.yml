@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     build: .
@@ -9,7 +7,10 @@ services:
     volumes:
       - ./img:/usr/share/nginx/html/img
     restart: unless-stopped
+    networks:
+      - default
 
 networks:
-  nginx-proxy:
-    external: true 
+  default:
+    external: true
+    name: web
