@@ -8,30 +8,32 @@ Application web interactive pour apprendre les mathématiques, incluant :
 
 ## Prérequis
 
-- Docker
-- Docker Compose
+- Serveur VPS avec Docker
+- Portainer
+- Nginx Proxy Manager (optionnel)
 
-## Installation
+## Installation via Portainer
 
-1. Clonez ce dépôt :
-```bash
-git clone [URL_DU_REPO]
-cd maths-app
-```
+1. **Préparation des fichiers** :
+   - Téléchargez tous les fichiers du projet sur votre ordinateur
+   - Créez un dossier `img` et placez-y l'image de fond `wallpaper.png`
+   - Compressez tous les fichiers en un fichier ZIP
 
-2. Créez le dossier pour les images :
-```bash
-mkdir -p img
-```
+2. **Déploiement sur Portainer** :
+   1. Connectez-vous à votre interface Portainer
+   2. Allez dans "Stacks"
+   3. Cliquez sur "Add stack"
+   4. Donnez un nom à votre stack (par exemple "maths-app")
+   5. Dans l'onglet "Build method", sélectionnez "Upload"
+   6. Uploadez votre fichier ZIP
+   7. Cliquez sur "Deploy the stack"
 
-3. Lancez l'application avec Docker Compose :
-```bash
-docker-compose up -d
-```
+3. **Vérification** :
+   - Accédez à http://[IP_DU_SERVEUR]:1987
+   - Vérifiez que l'image de fond s'affiche correctement
+   - Testez les différentes fonctionnalités
 
-L'application sera accessible à l'adresse : http://localhost:1987
-
-## Configuration Nginx Proxy Manager
+## Configuration Nginx Proxy Manager (optionnel)
 
 1. Connectez-vous à votre interface Nginx Proxy Manager
 2. Allez dans "Proxy Hosts"
@@ -46,23 +48,24 @@ L'application sera accessible à l'adresse : http://localhost:1987
 ## Maintenance
 
 ### Mise à jour
-Pour mettre à jour l'application :
-```bash
-docker-compose pull
-docker-compose up -d
-```
+Pour mettre à jour l'application via Portainer :
+1. Préparez une nouvelle version du ZIP
+2. Dans Portainer, allez dans votre stack
+3. Cliquez sur "Editor"
+4. Uploadez le nouveau ZIP
+5. Cliquez sur "Update the stack"
 
 ### Logs
-Pour voir les logs :
-```bash
-docker-compose logs -f
-```
+Pour voir les logs dans Portainer :
+1. Allez dans "Containers"
+2. Cliquez sur le conteneur "maths-app"
+3. Allez dans l'onglet "Logs"
 
 ### Arrêt
 Pour arrêter l'application :
-```bash
-docker-compose down
-```
+1. Dans Portainer, allez dans "Stacks"
+2. Trouvez votre stack
+3. Cliquez sur "Stop" ou "Remove" selon votre besoin
 
 ## Caractéristiques
 
@@ -80,4 +83,16 @@ docker-compose down
 - Compression gzip activée
 - Cache optimisé pour les ressources statiques
 - Healthcheck Docker configuré
-- Permissions nginx correctement configurées 
+- Permissions nginx correctement configurées
+
+## Résolution des problèmes courants
+
+1. **L'image de fond ne s'affiche pas** :
+   - Vérifiez que le fichier `wallpaper.png` est bien présent dans le dossier `img`
+   - Vérifiez les permissions du fichier (755)
+   - Inspectez les logs du conteneur pour voir les erreurs 404 éventuelles
+
+2. **Problèmes d'accès** :
+   - Vérifiez que le port 1987 est ouvert sur votre VPS
+   - Vérifiez les logs Nginx dans le conteneur
+   - Vérifiez la configuration du pare-feu du VPS 
