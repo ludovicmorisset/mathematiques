@@ -1,8 +1,9 @@
 services:
   web:
-    build: 
-      context: https://github.com/ludovicmorisset/mathematiques.git
-    image: ludovicmorisset/mathematiques:latest
+    build: .
+    container_name: maths-app
+    image: ghcr.io/ludovicmorisset/mathematiques:latest
+    pull_policy: always
     ports:
       - "1987:80"
     volumes:
