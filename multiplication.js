@@ -150,6 +150,7 @@ class MultiplicationGame {
         if (this.currentQuestion < 10) {
             this.currentQuestion++;
             this.currentQuestionSpan.textContent = this.currentQuestion;
+            document.getElementById('progressFill').style.width = `${(this.currentQuestion / 10) * 100}%`;
             this.showQuestion();
             // Réactiver le bouton valider et cacher le bouton suivant
             this.validateButton.classList.remove('hidden');
@@ -212,4 +213,4 @@ class MultiplicationGame {
 // Initialisation du jeu
 document.addEventListener('DOMContentLoaded', () => {
     new MultiplicationGame();
-}); 
+});
