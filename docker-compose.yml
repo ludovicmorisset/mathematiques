@@ -2,6 +2,7 @@ services:
   web:
     build: .
     container_name: maths-app
+    image: ghcr.io/ludovicmorisset/mathematiques:latest
     ports:
       - "1987:80"
     volumes:
