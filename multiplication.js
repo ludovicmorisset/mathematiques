@@ -6,6 +6,7 @@ class MultiplicationGame {
         this.questions = [];
         this.currentAnswer = null;
         this.userAnswers = [];
+        this.startTime = null;
 
         // Éléments DOM
         this.tablesSelection = document.querySelector('.tables-selection');
@@ -89,6 +90,7 @@ class MultiplicationGame {
         this.exerciseContainer.classList.remove('hidden');
         this.generateQuestions();
         this.showQuestion();
+        this.startTime = Date.now();
     }
 
     generateQuestions() {
@@ -165,6 +167,13 @@ class MultiplicationGame {
         this.exerciseContainer.classList.add('hidden');
         this.resultsContainer.classList.remove('hidden');
         this.scoreSpan.textContent = this.score;
+        const endTime = Date.now();
+        const timeElapsed = Math.floor((endTime - this.startTime) / 1000);
+        const minutes = Math.floor(timeElapsed / 60);
+        const seconds = timeElapsed % 60;
+        const timeText = document.createElement('p');
+        timeText.textContent = `Temps écoulé: ${minutes} minute${minutes !== 1 ? 's' : ''} et ${seconds} seconde${seconds !== 1 ? 's' : ''}`;
+        this.resultsContainer.insertBefore(timeText, this.answersList);
         this.displayDetailedResults();
     }
 

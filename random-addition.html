@@ -26,7 +26,12 @@
 
         <div class="exercise-container hidden">
             <div class="progress">
-                <span id="currentQuestion">1</span>/10
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="currentQuestion">1</span>/10
+                </div>
             </div>
             <div class="question-container">
                 <div class="question">
@@ -57,7 +62,10 @@
 
         <div class="results hidden">
             <h2>Résultats</h2>
-            <p>Score: <span id="score">0</span>/10</p>
+            <div class="score-time">
+                <p>Score: <span id="score">0</span>/10</p>
+                <p>Temps: <span id="time">0</span>s</p>
+            </div>
             <div class="detailed-results">
                 <h3>Détail des réponses</h3>
                 <div id="answersList"></div>
@@ -68,4 +76,4 @@
     </div>
     <script src="random-addition.js"></script>
 </body>
-</html> 
+</html>

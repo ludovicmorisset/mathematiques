@@ -6,6 +6,7 @@ class SubtractionGame {
         this.questions = [];
         this.currentAnswer = null;
         this.userAnswers = [];
+        this.startTime = null;
 
         // Éléments DOM
         this.tablesSelection = document.querySelector('.tables-selection');
@@ -21,6 +22,7 @@ class SubtractionGame {
         this.answersList = document.getElementById('answersList');
         this.validateButton = document.getElementById('validateButton');
         this.nextButton = document.getElementById('nextButton');
+        this.progressFill = document.getElementById('progressFill');
 
         // Boutons
         this.startButton = document.getElementById('startButton');
@@ -89,6 +91,7 @@ class SubtractionGame {
         this.exerciseContainer.classList.remove('hidden');
         this.generateQuestions();
         this.showQuestion();
+        this.startTime = Date.now();
     }
 
     generateQuestions() {
@@ -153,6 +156,7 @@ class SubtractionGame {
         if (this.currentQuestion < 10) {
             this.currentQuestion++;
             this.currentQuestionSpan.textContent = this.currentQuestion;
+            this.progressFill.style.width = `${(this.currentQuestion - 1) * 10}%`;
             this.showQuestion();
         } else {
             this.showResults();
@@ -163,6 +167,13 @@ class SubtractionGame {
         this.exerciseContainer.classList.add('hidden');
         this.resultsContainer.classList.remove('hidden');
         this.scoreSpan.textContent = this.score;
+        const endTime = Date.now();
+        const timeElapsed = Math.floor((endTime - this.startTime) / 1000);
+        const minutes = Math.floor(timeElapsed / 60);
+        const seconds = timeElapsed % 60;
+        const timeText = document.createElement('p');
+        timeText.textContent = `Temps écoulé: ${minutes} minute${minutes !== 1 ? 's' : ''} et ${seconds} seconde${seconds !== 1 ? 's' : ''}`;
+        this.resultsContainer.insertBefore(timeText, this.answersList);
         this.displayDetailedResults();
     }
 
@@ -199,16 +210,14 @@ class SubtractionGame {
         this.score = 0;
         this.userAnswers = [];
         this.currentQuestionSpan.textContent = this.currentQuestion;
-        this.resultsContainer.classList.add('hidden');
+        this.progressFill.style.width = '0%';
         this.tablesSelection.classList.remove('hidden');
-        document.querySelectorAll('.tables-grid input').forEach(checkbox => {
-            checkbox.checked = false;
-        });
-        this.selectedTables = [];
+        this.exerciseContainer.classList.add('hidden');
+        this.resultsContainer.classList.add('hidden');
     }
 }
 
 // Initialisation du jeu
 document.addEventListener('DOMContentLoaded', () => {
     new SubtractionGame();
-}); 
+});
