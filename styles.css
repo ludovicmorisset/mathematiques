@@ -223,7 +223,7 @@ h2 {
 }
 
 .results .score-time {
-    font-size: 1.5em;
+    font-size: 1em;
     margin-bottom: 2rem;
     color: #202124;
     display: flex;
@@ -682,4 +682,41 @@ h2 {
         font-size: 0.8rem;
         min-width: 130px;
     }
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stat-label {
+    font-weight: bold;
+    color: #2d8e47;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.final-time {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #2d8e47;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }

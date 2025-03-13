@@ -7,6 +7,7 @@ class MultiplicationGame {
         this.currentAnswer = null;
         this.userAnswers = [];
         this.startTime = null;
+        this.timerInterval = null;
 
         // Éléments DOM
         this.tablesSelection = document.querySelector('.tables-selection');
@@ -17,6 +18,7 @@ class MultiplicationGame {
         this.num2Span = document.getElementById('num2');
         this.answerInput = document.getElementById('answer');
         this.scoreSpan = document.getElementById('score');
+        this.timeSpan = document.getElementById('time');
         this.errorMessage = document.getElementById('errorMessage');
         this.successMessage = document.getElementById('successMessage');
         this.answersList = document.getElementById('answersList');
@@ -166,14 +168,17 @@ class MultiplicationGame {
     showResults() {
         this.exerciseContainer.classList.add('hidden');
         this.resultsContainer.classList.remove('hidden');
-        this.scoreSpan.textContent = this.score;
+        
+        // Calculer le temps total
         const endTime = Date.now();
         const timeElapsed = Math.floor((endTime - this.startTime) / 1000);
         const minutes = Math.floor(timeElapsed / 60);
         const seconds = timeElapsed % 60;
-        const timeText = document.createElement('p');
-        timeText.textContent = `Temps écoulé: ${minutes} minute${minutes !== 1 ? 's' : ''} et ${seconds} seconde${seconds !== 1 ? 's' : ''}`;
-        this.resultsContainer.insertBefore(timeText, this.answersList);
+        
+        // Afficher le score et le temps
+        this.scoreSpan.textContent = this.score;
+        this.timeSpan.textContent = `${minutes} min ${seconds}`;
+        
         this.displayDetailedResults();
     }
 

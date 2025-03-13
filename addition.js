@@ -17,6 +17,7 @@ class AdditionGame {
         this.num2Span = document.getElementById('num2');
         this.answerInput = document.getElementById('answer');
         this.scoreSpan = document.getElementById('score');
+        this.timeSpan = document.getElementById('time');
         this.errorMessage = document.getElementById('errorMessage');
         this.successMessage = document.getElementById('successMessage');
         this.answersList = document.getElementById('answersList');
@@ -167,21 +168,15 @@ class AdditionGame {
         this.exerciseContainer.classList.add('hidden');
         this.resultsContainer.classList.remove('hidden');
         
-        // Create and add score display
-        const scoreDisplay = document.createElement('div');
-        scoreDisplay.className = 'score-display';
-        scoreDisplay.textContent = `Score: ${this.score}/10`;
-        this.resultsContainer.appendChild(scoreDisplay);
-
-        // Calculate and display time
+        // Calculer le temps total
         const endTime = Date.now();
         const timeElapsed = Math.floor((endTime - this.startTime) / 1000);
         const minutes = Math.floor(timeElapsed / 60);
         const seconds = timeElapsed % 60;
-        const timeText = document.createElement('div');
-        timeText.className = 'time-display';
-        timeText.textContent = `Temps écoulé: ${minutes} minute${minutes !== 1 ? 's' : ''} et ${seconds} seconde${seconds !== 1 ? 's' : ''}`;
-        this.resultsContainer.appendChild(timeText);
+        
+        // Afficher le score et le temps
+        this.scoreSpan.textContent = this.score;
+        this.timeSpan.textContent = `${minutes} min ${seconds}`;
         
         this.displayDetailedResults();
     }
@@ -219,10 +214,12 @@ class AdditionGame {
         this.score = 0;
         this.userAnswers = [];
         this.currentQuestionSpan.textContent = this.currentQuestion;
-        this.progressFill.style.width = '0%';
-        this.tablesSelection.classList.remove('hidden');
-        this.exerciseContainer.classList.add('hidden');
         this.resultsContainer.classList.add('hidden');
+        this.tablesSelection.classList.remove('hidden');
+        document.querySelectorAll('.tables-grid input').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        this.selectedTables = [];
     }
 }
 
